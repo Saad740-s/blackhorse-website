@@ -1,110 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BlackHorse Property Care - Driveway Sealing, Lawn Mowing, and Landscaping Services in Ontario. Reliable. Strong. Professional.">
-    <title>BlackHorse Property Care</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BlackHorse Property Care — reliable lawn care, seasonal cleanups, driveway sealing and outdoor property services in Milton, Oakville and Mississauga.">
+<meta name="theme-color" content="#0e1311">
+<title>BlackHorse Property Care — Milton · Oakville · Mississauga</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="BlackHorse Property Care">
+<meta property="og:description" content="Reliable property care across Milton, Oakville and Mississauga. Lawn care, cleanups, driveway sealing and more.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="header">
-    <div class="container">
-        <h1 class="logo">BlackHorse Property Care</h1>
-        <nav class="nav">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#careers">Careers</a>
-            <a href="#quote">Request a Quote</a>
-            <a href="#contact">Contact Us</a>
-        </nav>
-    </div>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#home" class="brand" aria-label="BlackHorse Property Care home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <path d="M7 26c-1-5 0-9 3-12 2-2 2-4 1-6 3 1 5 3 6 6 3-1 5-3 6-6 2 4 1 8-2 11 2 1 4 4 4 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="22" cy="9" r="1.4" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand__text">BLACKHORSE<small>PROPERTY CARE</small></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#why">Why us</a>
+      <a href="#gallery">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#booking" class="btn btn--sm">Request a Service</a>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="#services">Services</a>
+    <a href="#process">How it works</a>
+    <a href="#why">Why us</a>
+    <a href="#gallery">Work</a>
+    <a href="#contact">Contact</a>
+    <a href="#booking" class="btn">Request a Service</a>
+  </div>
 </header>
 
+<!-- ============ HERO ============ -->
 <section id="home" class="hero">
-    <div class="container">
-        <h2>Strength. Precision. Excellence.</h2>
-        <p>Your trusted partner for property care across Ontario.</p>
-        <a href="#quote" class="btn">Get Your Free Quote</a>
+  <div class="hero__turf" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <p class="eyebrow">Milton · Oakville · Mississauga</p>
+    <h1 class="hero__title">Reliable property care,<br>done the right way.</h1>
+    <p class="hero__sub">Lawn care, seasonal cleanups, driveway sealing and outdoor property services — delivered professionally and on schedule, every time.</p>
+    <div class="hero__cta">
+      <a href="#booking" class="btn">Request a Booking</a>
+      <a href="#booking" class="btn btn--ghost">Get a Quote</a>
     </div>
+    <ul class="hero__trust">
+      <li><strong>Local</strong> crew, GTA-west</li>
+      <li><strong>Clear</strong> upfront pricing</li>
+      <li><strong>Flexible</strong> scheduling</li>
+    </ul>
+  </div>
 </section>
 
+<!-- ============ SERVICES ============ -->
 <section id="services" class="section">
-    <div class="container">
-        <h2>Our Services</h2>
-        <div class="services">
-            <div class="service-card">
-                <h3>Driveway Sealing</h3>
-                <p>Protect and enhance your driveway with professional-grade sealing.</p>
-            </div>
-            <div class="service-card">
-                <h3>Lawn Mowing</h3>
-                <p>Precision lawn care to keep your property looking sharp and healthy.</p>
-            </div>
-            <div class="service-card">
-                <h3>Landscaping Maintenance</h3>
-                <p>Beautify your outdoor spaces with expert landscaping services.</p>
-            </div>
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow eyebrow--dark">What we do</p>
+      <h2 class="section__title">Services built around your property</h2>
+    </header>
+
+    <div class="services">
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🌿</span>
+        <h3>Lawn Mowing &amp; Edging</h3>
+        <p>Clean, consistent cuts with sharp edges that keep your lawn looking maintained all season.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🍂</span>
+        <h3>Spring &amp; Fall Cleanups</h3>
+        <p>Full seasonal resets — leaves, debris and beds cleared so your yard starts fresh.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🪴</span>
+        <h3>Weed &amp; Bush Removal</h3>
+        <p>Overgrowth, weeds and unwanted shrubs removed cleanly, roots and all.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🌱</span>
+        <h3>Core Aeration &amp; Overseeding</h3>
+        <p>Relieve compacted soil and thicken thin lawns for healthier, greener growth.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🪵</span>
+        <h3>Mulch Installation</h3>
+        <p>Fresh mulch to protect beds, lock in moisture and finish your landscape sharp.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__ico" aria-hidden="true">🛣️</span>
+        <h3>Driveway Sealing</h3>
+        <p>Professional-grade sealing that protects asphalt and restores a deep, even finish.</p>
+      </article>
+      <article class="svc svc--wide">
+        <span class="svc__ico" aria-hidden="true">🏡</span>
+        <h3>Property Restoration</h3>
+        <p>Tired outdoor spaces brought back to life — from neglected yards to full property refreshes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process" class="section section--dark">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow">Simple by design</p>
+      <h2 class="section__title section__title--light">How it works</h2>
+    </header>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num">01</span>
+        <h3>Select your service</h3>
+        <p>Tell us what your property needs — one job or a full package.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">02</span>
+        <h3>Submit your details</h3>
+        <p>Share your address and a few notes so we can scope the work.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">03</span>
+        <h3>Get confirmation &amp; pricing</h3>
+        <p>We confirm your booking with clear, upfront pricing — no surprises.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">04</span>
+        <h3>We complete the work</h3>
+        <p>Our crew shows up on schedule and gets it done right.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section id="why" class="section">
+  <div class="container why">
+    <div class="why__lead">
+      <p class="eyebrow eyebrow--dark">Why BlackHorse</p>
+      <h2 class="section__title">Strength you can schedule.</h2>
+      <p class="why__copy">We treat every property like it's our own — dependable crews, honest pricing and communication you don't have to chase. Built for residential properties across Milton, Oakville and Mississauga.</p>
+    </div>
+    <ul class="why__list">
+      <li><span aria-hidden="true">✓</span> Local and reliable</li>
+      <li><span aria-hidden="true">✓</span> Clear, upfront pricing</li>
+      <li><span aria-hidden="true">✓</span> Professional communication</li>
+      <li><span aria-hidden="true">✓</span> Flexible scheduling</li>
+      <li><span aria-hidden="true">✓</span> Residential property specialists</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="section section--muted">
+  <div class="container">
+    <header class="section__head">
+      <p class="eyebrow eyebrow--dark">Real jobs, real results</p>
+      <h2 class="section__title">Before &amp; after</h2>
+    </header>
+
+    <div class="gallery">
+      <figure class="shot">
+        <div class="shot__ba">
+          <div class="shot__half shot__half--before"><span>Before</span></div>
+          <div class="shot__half shot__half--after"><span>After</span></div>
         </div>
-    </div>
-</section>
-
-<section id="about" class="section dark">
-    <div class="container">
-        <h2>About Us</h2>
-        <p>Founded with a vision of strength, reliability, and precision, BlackHorse Property Care services suburban homes across Ontario with pride. Our crew shares a commitment to excellence, teamwork, and customer satisfaction.</p>
-    </div>
-</section>
-
-<section id="portfolio" class="section">
-    <div class="container">
-        <h2>Our Work</h2>
-        <p>Every project reflects our dedication to quality and detail.</p>
-        <div class="portfolio-images">
-            <img src="portfolio1.jpg" alt="Driveway Sealing">
-            <img src="portfolio2.jpg" alt="Lawn Mowing">
-            <img src="portfolio3.jpg" alt="Landscape Maintenance">
+        <figcaption>Lawn restoration · Milton</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot__ba">
+          <div class="shot__half shot__half--before"><span>Before</span></div>
+          <div class="shot__half shot__half--after"><span>After</span></div>
         </div>
-    </div>
-</section>
-
-<section id="careers" class="section dark">
-    <div class="container">
-        <h2>Careers</h2>
-        <p>Join a company that values hard work, growth, and excellence. Apply today and build a career with BlackHorse Property Care.</p>
-    </div>
-</section>
-
-<section id="quote" class="section">
-    <div class="container">
-        <h2>Request a Quote</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="quote-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="text" name="phone" placeholder="Phone Number" required>
-            <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
-</section>
-
-<section id="contact" class="section dark">
-    <div class="container">
-        <h2>Contact Us</h2>
-        <p>Email: info@blackhorsepropertycare.com | Phone: (123) 456-7890</p>
-        <div class="social-links">
-            <a href="#">Instagram</a> | <a href="#">Facebook</a>
+        <figcaption>Driveway sealing · Oakville</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="shot__ba">
+          <div class="shot__half shot__half--before"><span>Before</span></div>
+          <div class="shot__half shot__half--after"><span>After</span></div>
         </div>
+        <figcaption>Fall cleanup · Mississauga</figcaption>
+      </figure>
     </div>
+    <p class="gallery__note">Photo placeholders — drop your real before/after job photos in to replace these.</p>
+  </div>
 </section>
 
+<!-- ============ BOOKING ============ -->
+<section id="booking" class="booking">
+  <div class="booking__grain" aria-hidden="true"></div>
+  <div class="container booking__inner">
+    <p class="eyebrow">Ready when you are</p>
+    <h2 class="booking__title">Book your property service today.</h2>
+    <p class="booking__sub">Pick a service, send your details, and we'll come back with confirmation and pricing.</p>
+    <a href="#contact" class="btn btn--lg" id="bookingBtn">Request a Service</a>
+    <p class="booking__hint">Online booking coming soon — for now we'll confirm your request directly.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section section--dark">
+  <div class="container contact">
+    <div class="contact__info">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="section__title section__title--light">Let's care for your property.</h2>
+      <ul class="contact__list">
+        <li><span class="contact__label">Phone</span><a href="tel:+1000000000">(123) 456-7890</a></li>
+        <li><span class="contact__label">Email</span><a href="mailto:info@blackhorsepropertycare.com">info@blackhorsepropertycare.com</a></li>
+        <li><span class="contact__label">Instagram</span><a href="#" rel="noopener">@blackhorsepropertycare</a></li>
+        <li><span class="contact__label">Areas</span><span>Milton · Oakville · Mississauga</span></li>
+      </ul>
+    </div>
+
+    <form class="contact__form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <h3>Request a service</h3>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" name="phone" autocomplete="tel" required>
+      </div>
+      <div class="field">
+        <label for="service">Service needed</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Choose a service</option>
+          <option>Lawn Mowing &amp; Edging</option>
+          <option>Spring / Fall Cleanup</option>
+          <option>Weed &amp; Bush Removal</option>
+          <option>Core Aeration &amp; Overseeding</option>
+          <option>Mulch Installation</option>
+          <option>Driveway Sealing</option>
+          <option>Property Restoration</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Property details</label>
+        <textarea id="message" name="message" rows="3" placeholder="Address, lot size, what you need…" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--full">Send Request</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
-    <div class="container">
-        <p>© 2025 BlackHorse Property Care. All rights reserved.</p>
-    </div>
+  <div class="container footer__inner">
+    <span class="footer__brand">BLACKHORSE <small>PROPERTY CARE</small></span>
+    <span>© 2025 BlackHorse Property Care. All rights reserved.</span>
+  </div>
 </footer>
 
 <script src="script.js"></script>
