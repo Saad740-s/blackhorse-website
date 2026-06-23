@@ -311,11 +311,14 @@ a{ color:inherit; text-decoration:none; }
 .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
 .shot{ border-radius:var(--r); overflow:hidden; background:#fff; box-shadow:var(--shadow-card); }
 .shot__ba{ display:flex; height:230px; }
-.shot__half{ flex:1; position:relative; display:grid; place-items:end start; }
+.shot__half{ flex:1; position:relative; overflow:hidden; }
+.shot__half img{ width:100%; height:100%; object-fit:cover; display:block; }
 .shot__half span{
+  position:absolute; bottom:.7rem; left:.7rem;
   font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:.12em;
-  font-size:.7rem; color:#fff; background:rgba(0,0,0,.4);
-  padding:.25rem .6rem; margin:.7rem;
+  font-size:.7rem; color:#fff; background:rgba(0,0,0,.5);
+  padding:.25rem .6rem; border-radius:4px;
+  z-index:2;
 }
 .shot__half--before{ background:linear-gradient(135deg,#5b6b5f,#3c4a40); }
 .shot__half--after{ background:linear-gradient(135deg,var(--turf),var(--moss)); }
