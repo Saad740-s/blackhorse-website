@@ -368,6 +368,70 @@ a { color:inherit; text-decoration:none; }
   padding:.3rem .65rem; border-radius:999px; white-space:nowrap;
 }
 
+/* ── TESTIMONIALS ── */
+.reviews-section {
+  padding:clamp(5rem,10vw,9rem) 0;
+  background:
+    radial-gradient(1000px 460px at 100% 0%, rgba(200,151,58,.1), transparent 60%),
+    var(--warm);
+}
+.reviews-head {
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+  gap:2rem; margin-bottom:clamp(2.5rem,5vw,4rem);
+}
+.gbadge {
+  display:flex; align-items:center; gap:1rem;
+  background:#fff; border:1px solid rgba(28,36,32,.09);
+  border-radius:14px; padding:1rem 1.4rem;
+  box-shadow:0 4px 16px -8px rgba(28,36,32,.15);
+}
+.gbadge__g {
+  width:42px; height:42px; border-radius:50%;
+  background:#fff; border:1px solid rgba(28,36,32,.1);
+  display:grid; place-items:center;
+}
+.gbadge__g svg { width:24px; height:24px; }
+.gbadge__score { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:600; color:var(--ink); line-height:1; }
+.gbadge__meta { display:flex; flex-direction:column; gap:.15rem; }
+.gbadge__stars { color:var(--gold); font-size:.85rem; letter-spacing:.15em; }
+.gbadge__label { font-size:.72rem; color:var(--muted); letter-spacing:.05em; }
+.reviews-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:1.4rem; }
+.rev { grid-column:span 2; }
+.rev:nth-child(4) { grid-column:2 / 4; }
+.rev:nth-child(5) { grid-column:4 / 6; }
+.rev {
+  background:#fff; border:1px solid rgba(28,36,32,.08);
+  border-radius:14px; padding:2rem 1.9rem;
+  position:relative; display:flex; flex-direction:column;
+  box-shadow:0 4px 16px -10px rgba(28,36,32,.14);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.rev:hover {
+  transform:translateY(-6px);
+  border-color:rgba(200,151,58,.4);
+  box-shadow:0 24px 48px -22px rgba(26,51,38,.35);
+}
+.rev::before {
+  content:'\201C';
+  position:absolute; top:.4rem; right:1.4rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem; line-height:1; color:rgba(200,151,58,.18);
+  pointer-events:none;
+}
+.rev__stars { color:var(--gold); font-size:.9rem; letter-spacing:.2em; margin-bottom:1rem; }
+.rev__text { font-size:.95rem; color:var(--ink); line-height:1.7; flex:1; margin-bottom:1.5rem; }
+.rev__who { display:flex; align-items:center; gap:.9rem; border-top:1px solid rgba(28,36,32,.07); padding-top:1.2rem; }
+.rev__avatar {
+  width:42px; height:42px; border-radius:50%; flex:0 0 42px;
+  background:linear-gradient(135deg, var(--moss), var(--pine));
+  color:var(--gold-lt); display:grid; place-items:center;
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:600;
+}
+.rev__name { font-size:.92rem; font-weight:500; color:var(--ink); line-height:1.3; }
+.rev__meta { font-size:.72rem; color:var(--muted); letter-spacing:.04em; }
+.rev__gicon { margin-left:auto; width:18px; height:18px; opacity:.85; }
+.reviews-cta { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:clamp(2rem,4vw,3rem); }
+
 /* ── SECOND VIDEO STRIP ── */
 .reel-section {
   position:relative; height:clamp(280px,40vw,500px);
@@ -467,6 +531,8 @@ a { color:inherit; text-decoration:none; }
   .why__overlay { background:rgba(10,15,13,.62); }
   .contact-grid { grid-template-columns:1fr; gap:3rem; }
   .gallery-grid { grid-template-columns:1fr 1fr; }
+  .reviews-grid { grid-template-columns:1fr 1fr; }
+  .rev, .rev:nth-child(4), .rev:nth-child(5) { grid-column:auto; }
 }
 @media (max-width:720px) {
   .nav__links { display:none; }
@@ -477,6 +543,8 @@ a { color:inherit; text-decoration:none; }
   .svc--featured .btn { grid-column:1; }
   .process-grid { grid-template-columns:1fr; }
   .gallery-grid { grid-template-columns:1fr; }
+  .reviews-grid { grid-template-columns:1fr; }
+  .reviews-head { flex-direction:column; align-items:flex-start; }
   .reel__overlay { background:rgba(10,15,13,.7); }
 }
 @media (max-width:480px) {
@@ -497,6 +565,7 @@ a { color:inherit; text-decoration:none; }
       <a href="#process">How it works</a>
       <a href="#why">Why us</a>
       <a href="#gallery">Work</a>
+      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="#booking" class="btn btn--gold btn--sm">Book a service</a>
@@ -509,6 +578,7 @@ a { color:inherit; text-decoration:none; }
     <a href="#process">How it works</a>
     <a href="#why">Why us</a>
     <a href="#gallery">Work</a>
+    <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
     <a href="#booking" class="btn btn--gold">Book a service</a>
   </div>
@@ -815,6 +885,124 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
+<!-- TESTIMONIALS / GOOGLE REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <div class="reviews-head reveal">
+      <div>
+        <p class="label label--moss">Happy customers</p>
+        <h2 class="display display--md" style="margin-top:.6rem;">What our clients<br>are saying.</h2>
+      </div>
+      <div class="gbadge">
+        <div class="gbadge__g" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+        <span class="gbadge__score">5.0</span>
+        <div class="gbadge__meta">
+          <span class="gbadge__stars">★★★★★</span>
+          <span class="gbadge__label">5 reviews on Google</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <article class="rev reveal">
+        <div class="rev__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="rev__text">"Got my backyard cleaned up by them, they were so fast! Very good communication and patient to listen to what you need. They definitely deliver a great service. I will be using them for my monthly clean up for my lawn… thank you."</p>
+        <div class="rev__who">
+          <div class="rev__avatar">N</div>
+          <div>
+            <div class="rev__name">Noorys</div>
+            <div class="rev__meta">Backyard cleanup · Google review</div>
+          </div>
+          <svg class="rev__gicon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+      </article>
+      <article class="rev reveal">
+        <div class="rev__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="rev__text">"Blackhorse Property Care did an excellent job removing snow at my parents' house. They were fast, reliable, and very thorough, cleared the driveway and walkways perfectly. Great service and highly recommended."</p>
+        <div class="rev__who">
+          <div class="rev__avatar">S</div>
+          <div>
+            <div class="rev__name">SLEEMAN Home Renovation</div>
+            <div class="rev__meta">Snow removal · Google review</div>
+          </div>
+          <svg class="rev__gicon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+      </article>
+      <article class="rev reveal">
+        <div class="rev__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="rev__text">"I've been using this lawn service for my grass cutting, and they always do an excellent job. The team is reliable, on time, and pays attention to detail — every cut is neat, clean, and makes the yard look great. They're professional, friendly, and clearly take pride in their work. Highly recommend!"</p>
+        <div class="rev__who">
+          <div class="rev__avatar">W</div>
+          <div>
+            <div class="rev__name">Waseem Kassas</div>
+            <div class="rev__meta">Lawn mowing · Local Guide</div>
+          </div>
+          <svg class="rev__gicon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+      </article>
+      <article class="rev reveal">
+        <div class="rev__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="rev__text">"Recently got my lawn trimmed by them. Amazed by the results and the customer service, really friendly guys and offer a seamless experience very smooth to deal with. If you're looking for lawn care this is who to go to 100%."</p>
+        <div class="rev__who">
+          <div class="rev__avatar">Y</div>
+          <div>
+            <div class="rev__name">Yoseph Ziyadeh</div>
+            <div class="rev__meta">Lawn trimming · Google review</div>
+          </div>
+          <svg class="rev__gicon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+      </article>
+      <article class="rev reveal">
+        <div class="rev__stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="rev__text">"Very good sealing and very nice people."</p>
+        <div class="rev__who">
+          <div class="rev__avatar">K</div>
+          <div>
+            <div class="rev__name">Khaled Almorad</div>
+            <div class="rev__meta">Driveway sealing · Local Guide</div>
+          </div>
+          <svg class="rev__gicon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.86c2.26-2.08 3.58-5.15 3.58-8.81z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.86-3c-1.07.72-2.44 1.15-4.08 1.15-3.13 0-5.78-2.11-6.73-4.96H1.29v3.1A12 12 0 0 0 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.28A7.2 7.2 0 0 1 4.89 12c0-.79.14-1.56.38-2.28v-3.1H1.29a12 12 0 0 0 0 10.76l3.98-3.1z"/>
+            <path fill="#EA4335" d="M12 4.76c1.76 0 3.34.6 4.59 1.8l3.43-3.43C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.29 6.62l3.98 3.1C6.22 6.87 8.87 4.76 12 4.76z"/>
+          </svg>
+        </div>
+      </article>
+    </div>
+    <div class="reviews-cta reveal">
+      <a href="https://share.google/eAYbA9PuHcqcilT8u" target="_blank" rel="noopener" class="btn btn--outline-dark">Read all reviews on Google</a>
+      <a href="https://share.google/eAYbA9PuHcqcilT8u" target="_blank" rel="noopener" class="btn btn--gold">Leave us a review</a>
+    </div>
+  </div>
+</section>
+
 <!-- REEL STRIP -->
 <div class="reel-section">
   <video class="reel__video" autoplay muted loop playsinline preload="none">
@@ -856,7 +1044,7 @@ a { color:inherit; text-decoration:none; }
       </ul>
     </div>
     <div class="reveal reveal--right">
-      <form class="contact-form" action="https://formspree.io/f/xakbdlpw" method="POST">
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <h3 class="form-title">Request a service</h3>
         <div class="field">
           <label for="name">Full name</label>
