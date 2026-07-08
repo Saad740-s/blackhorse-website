@@ -142,27 +142,85 @@ a { color:inherit; text-decoration:none; }
 .stat__label { font-size:.78rem; color:rgba(245,242,235,.5); letter-spacing:.08em; text-transform:uppercase; margin-top:.3rem; }
 
 /* ── SERVICES ── */
-.services-section { padding:clamp(5rem,10vw,9rem) 0; background:var(--bone); }
+.services-section {
+  padding:clamp(5rem,10vw,9rem) 0;
+  background:
+    radial-gradient(1100px 480px at 85% -5%, rgba(200,151,58,.09), transparent 60%),
+    radial-gradient(900px 500px at -10% 105%, rgba(45,92,64,.08), transparent 60%),
+    var(--bone);
+}
 .section-head { margin-bottom:clamp(2.5rem,5vw,4rem); }
 .section-head p { color:var(--muted); font-size:1.05rem; max-width:480px; margin-top:.8rem; font-weight:300; }
 
-.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(28,36,32,.08); border:1px solid rgba(28,36,32,.08); }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
 .svc {
-  background:var(--bone); padding:2.2rem 2rem;
+  background:#fff;
+  border:1px solid rgba(28,36,32,.08);
+  border-radius:12px;
+  padding:2.1rem 1.9rem 2rem;
   position:relative; overflow:hidden;
-  transition:background .35s var(--ease);
+  box-shadow:0 2px 12px -6px rgba(28,36,32,.08);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
-.svc::after {
-  content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
-  background:var(--gold); transition:width .4s var(--ease);
+.svc::before {
+  content:''; position:absolute; inset:0 0 auto; height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-lt));
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .45s var(--ease);
 }
-.svc:hover { background:#fff; }
-.svc:hover::after { width:100%; }
-.svc__num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:400; color:rgba(28,36,32,.1); line-height:1; margin-bottom:1rem; }
-.svc h3 { font-size:1.05rem; font-weight:500; margin-bottom:.5rem; }
+.svc:hover {
+  transform:translateY(-6px);
+  border-color:rgba(200,151,58,.4);
+  box-shadow:0 22px 44px -20px rgba(26,51,38,.35);
+}
+.svc:hover::before { transform:scaleX(1); }
+.svc__top { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.3rem; }
+.svc__icon {
+  width:52px; height:52px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(45,92,64,.1), rgba(74,153,98,.18));
+  border:1px solid rgba(45,92,64,.18);
+  display:grid; place-items:center; color:var(--moss);
+  transition:background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+}
+.svc__icon svg { width:26px; height:26px; }
+.svc:hover .svc__icon { background:var(--pine); color:var(--gold-lt); transform:rotate(-6deg) scale(1.05); border-color:var(--pine); }
+.svc__num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem; font-weight:600; letter-spacing:.1em;
+  color:var(--gold);
+}
+.svc h3 { font-size:1.08rem; font-weight:500; margin-bottom:.5rem; }
 .svc p { font-size:.9rem; color:var(--muted); line-height:1.65; }
-.svc--span { grid-column:span 3; display:grid; grid-template-columns:1fr 1fr 1fr; }
-.svc--span .svc__body { grid-column:span 2; }
+
+/* Featured / signature service */
+.svc--featured {
+  grid-column:1 / -1;
+  background:linear-gradient(115deg, var(--pine) 0%, var(--deep) 70%);
+  border:1px solid rgba(200,151,58,.3);
+  color:var(--bone);
+  display:grid; grid-template-columns:auto 1fr auto;
+  align-items:center; gap:2.2rem;
+  padding:2.4rem 2.4rem;
+}
+.svc--featured::before { background:linear-gradient(90deg, var(--gold), var(--gold-lt)); transform:scaleX(1); }
+.svc--featured .svc__icon {
+  width:64px; height:64px; border-radius:18px;
+  background:rgba(200,151,58,.12); border:1px solid rgba(200,151,58,.35);
+  color:var(--gold-lt);
+}
+.svc--featured:hover .svc__icon { background:rgba(200,151,58,.2); }
+.svc--featured .svc__tag {
+  display:inline-block; font-size:.62rem; font-weight:500;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold-lt); border:1px solid rgba(200,151,58,.4);
+  border-radius:999px; padding:.25rem .7rem; margin-bottom:.7rem;
+}
+.svc--featured h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,2.6vw,2rem); font-weight:600; color:var(--bone);
+}
+.svc--featured p { color:rgba(245,242,235,.65); font-size:.95rem; max-width:60ch; }
+.svc--featured .btn { white-space:nowrap; }
 
 /* ── VIDEO SECTION (Why us) ── */
 .why-section {
@@ -173,59 +231,142 @@ a { color:inherit; text-decoration:none; }
 }
 .why__video {
   position:absolute; inset:0; z-index:-2;
-  width:100%; height:100%; object-fit:cover; opacity:.7;
+  width:100%; height:100%; object-fit:cover; opacity:.85;
 }
-.why__overlay { position:absolute; inset:0; z-index:-1; background:var(--deep); opacity:.3; }
+.why__overlay {
+  position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(to right,
+    rgba(10,15,13,.85) 0%,
+    rgba(10,15,13,.6) 45%,
+    rgba(10,15,13,.35) 100%);
+}
 .why__inner { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,6vw,7rem); align-items:center; }
-.why__list { list-style:none; display:grid; gap:0; }
-.why__item {
-  display:flex; gap:1.4rem; align-items:flex-start;
-  padding:1.4rem 0; border-bottom:1px solid rgba(255,255,255,.07);
+.why__copy p {
+  color:rgba(245,242,235,.88); font-size:1rem; font-weight:300;
+  max-width:38ch; line-height:1.75;
+  text-shadow:0 1px 14px rgba(0,0,0,.55);
 }
-.why__item:first-child { padding-top:0; }
-.why__item:last-child { border:0; }
-.why__icon { flex:0 0 36px; height:36px; border-radius:50%; background:rgba(74,153,98,.15); border:1px solid rgba(74,153,98,.3); display:grid; place-items:center; color:var(--turf); font-size:.9rem; margin-top:.1rem; }
-.why__text h4 { font-size:1rem; font-weight:500; color:var(--bone); margin-bottom:.3rem; }
-.why__text p { font-size:.88rem; color:rgba(245,242,235,.5); line-height:1.6; }
+.why__copy .display, .why__copy .label { text-shadow:0 1px 16px rgba(0,0,0,.55); }
+.why__list { list-style:none; display:grid; gap:.9rem; }
+.why__item {
+  display:flex; gap:1.3rem; align-items:flex-start;
+  padding:1.2rem 1.4rem;
+  background:rgba(10,15,13,.55);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  transition:transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.why__item:hover { transform:translateX(6px); border-color:rgba(200,151,58,.45); background:rgba(10,15,13,.68); }
+.why__icon {
+  flex:0 0 38px; height:38px; border-radius:50%;
+  background:rgba(74,153,98,.2); border:1px solid rgba(74,153,98,.45);
+  display:grid; place-items:center; color:var(--turf);
+  font-size:.9rem; margin-top:.1rem;
+}
+.why__text h4 { font-size:1.02rem; font-weight:500; color:#fff; margin-bottom:.3rem; }
+.why__text p { font-size:.9rem; color:rgba(245,242,235,.8); line-height:1.6; }
 
 /* ── PROCESS ── */
-.process-section { padding:clamp(5rem,10vw,9rem) 0; background:var(--warm); }
-.process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:clamp(2.5rem,5vw,4rem); }
-.process-step {
-  padding:2.4rem 2rem; border-right:1px solid rgba(28,36,32,.1);
+.process-section {
+  padding:clamp(5rem,10vw,9rem) 0;
+  background:
+    radial-gradient(900px 400px at 15% 0%, rgba(200,151,58,.08), transparent 60%),
+    var(--warm);
+}
+.process-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1.2rem; margin-top:clamp(2.5rem,5vw,4rem);
   position:relative;
 }
-.process-step:last-child { border-right:0; }
-.process-step::before {
-  content:attr(data-num);
-  font-family:'Cormorant Garamond',serif;
-  font-size:5rem; font-weight:400;
-  color:rgba(28,36,32,.06); position:absolute;
-  top:.5rem; right:1rem; line-height:1;
-  pointer-events:none;
+.process-step {
+  background:#fff;
+  border:1px solid rgba(28,36,32,.08);
+  border-radius:12px;
+  padding:2.1rem 1.8rem;
+  position:relative;
+  box-shadow:0 2px 12px -6px rgba(28,36,32,.08);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
-.process-step .label { margin-bottom:.8rem; }
+.process-step:hover {
+  transform:translateY(-6px);
+  border-color:rgba(200,151,58,.4);
+  box-shadow:0 22px 44px -20px rgba(26,51,38,.3);
+}
+.step__badge {
+  width:58px; height:58px; border-radius:50%;
+  border:1.5px solid var(--gold);
+  background:linear-gradient(145deg, #fff, var(--warm));
+  display:grid; place-items:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem; font-weight:600; color:var(--gold);
+  margin-bottom:1.2rem;
+  box-shadow:0 6px 16px -8px rgba(200,151,58,.55);
+  transition:background .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
+}
+.process-step:hover .step__badge { background:var(--pine); color:var(--gold-lt); transform:scale(1.06); }
+.process-step::after {
+  content:''; position:absolute; top:57px; right:-1.2rem;
+  width:1.2rem; border-top:2px dashed rgba(200,151,58,.55);
+}
+.process-step:last-child::after { display:none; }
+.process-step .label { margin-bottom:.7rem; display:block; }
 .process-step h3 { font-size:1.1rem; font-weight:500; margin-bottom:.5rem; }
 .process-step p { font-size:.88rem; color:var(--muted); line-height:1.65; }
 
 /* ── GALLERY ── */
 .gallery-section { padding:clamp(5rem,10vw,9rem) 0; background:var(--bone); }
-.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:clamp(2.5rem,5vw,4rem); }
-.shot { border-radius:var(--r); overflow:hidden; background:#000; position:relative; }
-.shot__ba { display:flex; height:260px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:clamp(2.5rem,5vw,4rem); }
+.shot {
+  border-radius:14px; overflow:hidden; background:#fff; position:relative;
+  border:1px solid rgba(28,36,32,.08);
+  box-shadow:0 4px 18px -10px rgba(28,36,32,.18);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.shot:hover {
+  transform:translateY(-6px);
+  border-color:rgba(200,151,58,.4);
+  box-shadow:0 26px 52px -22px rgba(26,51,38,.4);
+}
+.shot__ba { display:flex; height:280px; position:relative; }
 .shot__half { flex:1; position:relative; overflow:hidden; }
-.shot__half img { width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
-.shot:hover .shot__half img { transform:scale(1.04); }
+.shot__half img { width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease), filter .6s var(--ease); }
+.shot__half--before img { filter:saturate(.65) contrast(.95) brightness(.96); }
+.shot:hover .shot__half img { transform:scale(1.05); }
+.shot:hover .shot__half--before img { filter:saturate(.75) contrast(.97); }
 .shot__tag {
-  position:absolute; bottom:.7rem; left:.7rem;
-  font-family:'DM Sans',sans-serif; font-size:.65rem;
-  font-weight:500; letter-spacing:.14em; text-transform:uppercase;
-  color:#fff; background:rgba(0,0,0,.45);
-  padding:.2rem .55rem; border-radius:3px; z-index:2;
+  position:absolute; bottom:.75rem; left:.75rem;
+  font-family:'DM Sans',sans-serif; font-size:.62rem;
+  font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  padding:.28rem .65rem; border-radius:999px; z-index:2;
   backdrop-filter:blur(4px);
 }
-.shot__divider { position:absolute; left:50%; top:0; bottom:0; width:1px; background:rgba(255,255,255,.4); z-index:3; }
-.shot figcaption { padding:.85rem 1rem; font-size:.85rem; font-weight:400; color:var(--muted); }
+.shot__tag--before { color:#fff; background:rgba(10,15,13,.72); border:1px solid rgba(255,255,255,.2); }
+.shot__tag--after { color:var(--black); background:var(--gold); border:1px solid var(--gold-lt); }
+.shot__divider { position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(255,255,255,.65); z-index:3; transform:translateX(-50%); }
+.shot__badge {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:40px; height:40px; border-radius:50%;
+  background:var(--bone); border:2px solid var(--gold);
+  display:grid; place-items:center; color:var(--pine);
+  z-index:4; box-shadow:0 6px 16px rgba(0,0,0,.35);
+  transition:transform .3s var(--ease), background .3s var(--ease);
+}
+.shot:hover .shot__badge { transform:translate(-50%,-50%) scale(1.12); background:#fff; }
+.shot__badge svg { width:18px; height:18px; }
+.shot figcaption {
+  display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+  padding:1rem 1.2rem;
+  border-top:1px solid rgba(28,36,32,.07);
+}
+.shot__svc { font-size:.94rem; font-weight:500; color:var(--ink); }
+.shot__loc {
+  font-size:.65rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--moss); background:rgba(45,92,64,.09);
+  border:1px solid rgba(45,92,64,.15);
+  padding:.3rem .65rem; border-radius:999px; white-space:nowrap;
+}
 
 /* ── SECOND VIDEO STRIP ── */
 .reel-section {
@@ -246,8 +387,15 @@ a { color:inherit; text-decoration:none; }
 .booking-section {
   padding:clamp(5rem,10vw,9rem) 0;
   background:var(--black); color:var(--bone);
-  text-align:center;
+  text-align:center; position:relative; overflow:hidden;
 }
+.booking-section::before {
+  content:''; position:absolute; left:50%; top:-40%;
+  width:900px; height:600px; transform:translateX(-50%);
+  background:radial-gradient(closest-side, rgba(200,151,58,.14), transparent 70%);
+  pointer-events:none;
+}
+.booking-section > .container { position:relative; }
 .booking-section .display { color:var(--bone); margin:1rem 0 1.5rem; }
 .booking-section .display em { color:var(--gold-lt); }
 .booking-section p { color:rgba(245,242,235,.55); font-size:.9rem; max-width:400px; margin-inline:auto; margin-top:1.2rem; }
@@ -311,13 +459,12 @@ a { color:inherit; text-decoration:none; }
 /* ── RESPONSIVE ── */
 @media (max-width:980px) {
   .services-grid { grid-template-columns:repeat(2,1fr); }
-  .svc--span { grid-column:span 2; grid-template-columns:1fr; }
-  .svc--span .svc__body { grid-column:span 1; }
+  .svc--featured { grid-template-columns:auto 1fr; }
+  .svc--featured .btn { grid-column:2; justify-self:start; }
   .process-grid { grid-template-columns:repeat(2,1fr); }
-  .process-step { border-bottom:1px solid rgba(28,36,32,.1); }
-  .process-step:nth-child(2) { border-right:0; }
-  .process-step:nth-child(3) { border-bottom:0; }
+  .process-step::after { display:none; }
   .why__inner { grid-template-columns:1fr; gap:3rem; }
+  .why__overlay { background:rgba(10,15,13,.62); }
   .contact-grid { grid-template-columns:1fr; gap:3rem; }
   .gallery-grid { grid-template-columns:1fr 1fr; }
 }
@@ -326,9 +473,9 @@ a { color:inherit; text-decoration:none; }
   .nav .btn--sm { display:none; }
   .nav__toggle { display:flex; }
   .services-grid { grid-template-columns:1fr; }
-  .svc--span { grid-column:span 1; }
+  .svc--featured { grid-template-columns:1fr; gap:1.2rem; padding:2rem 1.8rem; }
+  .svc--featured .btn { grid-column:1; }
   .process-grid { grid-template-columns:1fr; }
-  .process-step { border-right:0; }
   .gallery-grid { grid-template-columns:1fr; }
   .reel__overlay { background:rgba(10,15,13,.7); }
 }
@@ -383,7 +530,7 @@ a { color:inherit; text-decoration:none; }
     </div>
     <div class="hero__stats reveal">
       <div>
-        <div class="stat__num">3+</div>
+        <div class="stat__num">1+</div>
         <div class="stat__label">Years operating</div>
       </div>
       <div>
@@ -408,39 +555,102 @@ a { color:inherit; text-decoration:none; }
     </div>
     <div class="services-grid">
       <article class="svc reveal">
-        <div class="svc__num">01</div>
-        <h3>Lawn Mowing & Edging</h3>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20c1.5-4 1-8 0-11 2.5 2 3.5 5 3.5 7.5"/>
+              <path d="M10 20c.5-5-.5-9-2-12 3 1.5 4.5 5 4.5 8"/>
+              <path d="M16 20c1.5-4 3-6.5 5.5-8-1 2.5-1.5 5-1.5 8"/>
+              <path d="M2 20h20"/>
+            </svg>
+          </div>
+          <span class="svc__num">01</span>
+        </div>
+        <h3>Lawn Mowing &amp; Edging</h3>
         <p>Consistent cuts with clean edges every visit, all season long.</p>
       </article>
       <article class="svc reveal">
-        <div class="svc__num">02</div>
-        <h3>Spring & Fall Cleanups</h3>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 4c-8 0-14 4-14 12 8 0 14-4 14-12z"/>
+              <path d="M6 16c-1.5 1.5-2.5 3-3 4"/>
+            </svg>
+          </div>
+          <span class="svc__num">02</span>
+        </div>
+        <h3>Spring &amp; Fall Cleanups</h3>
         <p>Full seasonal resets — debris, leaves and beds cleared so your yard starts fresh.</p>
       </article>
       <article class="svc reveal">
-        <div class="svc__num">03</div>
-        <h3>Weed & Bush Removal</h3>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21V10"/>
+              <path d="M12 13c0-3 2.5-5 6-5 0 3-2.5 5-6 5z"/>
+              <path d="M12 10c0-3-2.5-5-6-5 0 3 2.5 5 6 5z"/>
+              <path d="M7 21h10"/>
+            </svg>
+          </div>
+          <span class="svc__num">03</span>
+        </div>
+        <h3>Weed &amp; Bush Removal</h3>
         <p>Overgrowth and unwanted shrubs removed cleanly, roots and all.</p>
       </article>
       <article class="svc reveal">
-        <div class="svc__num">04</div>
-        <h3>Core Aeration & Overseeding</h3>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="7" r="1.4"/><circle cx="12" cy="5" r="1.4"/><circle cx="18" cy="7" r="1.4"/>
+              <circle cx="8" cy="12" r="1.4"/><circle cx="16" cy="12" r="1.4"/>
+              <path d="M3 19c3-2 6-2 9 0 3-2 6-2 9 0"/>
+            </svg>
+          </div>
+          <span class="svc__num">04</span>
+        </div>
+        <h3>Core Aeration &amp; Overseeding</h3>
         <p>Relieve compacted soil and thicken thin lawns for healthier growth.</p>
       </article>
       <article class="svc reveal">
-        <div class="svc__num">05</div>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 17l9 4 9-4"/>
+              <path d="M3 12l9 4 9-4"/>
+              <path d="M12 3l9 4-9 4-9-4 9-4z"/>
+            </svg>
+          </div>
+          <span class="svc__num">05</span>
+        </div>
         <h3>Mulch Installation</h3>
         <p>Fresh mulch to protect beds, retain moisture and finish your landscape sharp.</p>
       </article>
       <article class="svc reveal">
-        <div class="svc__num">06</div>
+        <div class="svc__top">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6l8-3z"/>
+              <path d="M8.5 12.5l2.5 2.5 4.5-4.5"/>
+            </svg>
+          </div>
+          <span class="svc__num">06</span>
+        </div>
         <h3>Driveway Sealing</h3>
         <p>Professional-grade sealing that protects asphalt and restores a clean, even finish.</p>
       </article>
-      <article class="svc reveal" style="grid-column:span 3;border-top:1px solid rgba(28,36,32,.08);">
-        <div class="svc__num">07</div>
-        <h3>Property Restoration</h3>
-        <p>Neglected outdoor spaces brought back to life — from overgrown yards to full property refreshes. This is the job we're most proud of.</p>
+      <article class="svc svc--featured reveal">
+        <div class="svc__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+            <circle cx="12" cy="12" r="3.5"/>
+          </svg>
+        </div>
+        <div class="svc__body">
+          <span class="svc__tag">Signature service · 07</span>
+          <h3>Property Restoration</h3>
+          <p>Neglected outdoor spaces brought back to life — from overgrown yards to full property refreshes. This is the job we're most proud of.</p>
+        </div>
+        <a href="#booking" class="btn btn--gold">Restore my property</a>
       </article>
     </div>
   </div>
@@ -453,10 +663,10 @@ a { color:inherit; text-decoration:none; }
   </video>
   <div class="why__overlay"></div>
   <div class="container why__inner">
-    <div class="reveal reveal--left">
+    <div class="why__copy reveal reveal--left">
       <p class="label label--light">Why BlackHorse</p>
       <h2 class="display display--md" style="color:var(--bone);margin:1rem 0 1.2rem;">Strength you<br>can schedule.</h2>
-      <p style="color:rgba(245,242,235,.6);font-size:1rem;font-weight:300;max-width:38ch;line-height:1.75;">We treat every property like it's our own. Dependable crews, upfront pricing, and communication you don't have to chase.</p>
+      <p>We treat every property like it's our own. Dependable crews, upfront pricing, and communication you don't have to chase.</p>
     </div>
     <ul class="why__list reveal reveal--right">
       <li class="why__item">
@@ -499,22 +709,26 @@ a { color:inherit; text-decoration:none; }
       <h2 class="display display--md" style="margin-top:.6rem;">How it works.</h2>
     </div>
     <div class="process-grid">
-      <div class="process-step reveal" data-num="1">
+      <div class="process-step reveal">
+        <div class="step__badge">1</div>
         <p class="label label--moss">Step one</p>
         <h3>Tell us what you need</h3>
         <p>Pick a service or describe your property. One job or a full package — we can handle it.</p>
       </div>
-      <div class="process-step reveal" data-num="2">
+      <div class="process-step reveal">
+        <div class="step__badge">2</div>
         <p class="label label--moss">Step two</p>
         <h3>Get a clear quote</h3>
         <p>We confirm pricing upfront. No vague estimates, no surprises when the work is done.</p>
       </div>
-      <div class="process-step reveal" data-num="3">
+      <div class="process-step reveal">
+        <div class="step__badge">3</div>
         <p class="label label--moss">Step three</p>
-        <h3>We schedule & show up</h3>
+        <h3>We schedule &amp; show up</h3>
         <p>You pick the time, we show up on it. Professional crew, proper equipment, every time.</p>
       </div>
-      <div class="process-step reveal" data-num="4">
+      <div class="process-step reveal">
+        <div class="step__badge">4</div>
         <p class="label label--moss">Step four</p>
         <h3>Done right, every time</h3>
         <p>Job complete, property looking sharp. We send photos if you're not on-site.</p>
@@ -528,50 +742,74 @@ a { color:inherit; text-decoration:none; }
   <div class="container">
     <div class="section-head reveal">
       <p class="label label--moss">Real jobs, real results</p>
-      <h2 class="display display--md" style="margin-top:.6rem;">Before & after.</h2>
+      <h2 class="display display--md" style="margin-top:.6rem;">Before &amp; after.</h2>
     </div>
     <div class="gallery-grid">
       <figure class="shot reveal">
         <div class="shot__ba">
-          <div class="shot__half">
-            <img src="/images/lawn-before-1.jpg" alt="Lawn before">
-            <span class="shot__tag">Before</span>
+          <div class="shot__half shot__half--before">
+            <img src="/images/lawn-before-1.jpg" alt="Lawn before restoration">
+            <span class="shot__tag shot__tag--before">Before</span>
           </div>
           <div class="shot__divider"></div>
+          <div class="shot__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7H3l3-3M3 7l3 3"/><path d="M16 17h5l-3-3M21 17l-3 3"/>
+            </svg>
+          </div>
           <div class="shot__half">
-            <img src="/images/lawn-after-1.jpg" alt="Lawn after">
-            <span class="shot__tag">After</span>
+            <img src="/images/lawn-after-1.jpg" alt="Lawn after restoration">
+            <span class="shot__tag shot__tag--after">After</span>
           </div>
         </div>
-        <figcaption>Lawn restoration · Milton</figcaption>
+        <figcaption>
+          <span class="shot__svc">Lawn restoration</span>
+          <span class="shot__loc">Milton</span>
+        </figcaption>
       </figure>
       <figure class="shot reveal">
         <div class="shot__ba">
-          <div class="shot__half">
-            <img src="/images/driveway-before-1.jpg" alt="Driveway before">
-            <span class="shot__tag">Before</span>
+          <div class="shot__half shot__half--before">
+            <img src="/images/driveway-before-1.jpg" alt="Driveway before sealing">
+            <span class="shot__tag shot__tag--before">Before</span>
           </div>
           <div class="shot__divider"></div>
+          <div class="shot__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7H3l3-3M3 7l3 3"/><path d="M16 17h5l-3-3M21 17l-3 3"/>
+            </svg>
+          </div>
           <div class="shot__half">
-            <img src="/images/driveway-after-1.jpg" alt="Driveway after">
-            <span class="shot__tag">After</span>
+            <img src="/images/driveway-after-1.jpg" alt="Driveway after sealing">
+            <span class="shot__tag shot__tag--after">After</span>
           </div>
         </div>
-        <figcaption>Driveway sealing · Oakville</figcaption>
+        <figcaption>
+          <span class="shot__svc">Driveway sealing</span>
+          <span class="shot__loc">Oakville</span>
+        </figcaption>
       </figure>
       <figure class="shot reveal">
         <div class="shot__ba">
-          <div class="shot__half">
-            <img src="/images/cleanup-before-1.jpg" alt="Cleanup before">
-            <span class="shot__tag">Before</span>
+          <div class="shot__half shot__half--before">
+            <img src="/images/cleanup-before-1.jpg" alt="Property before cleanup">
+            <span class="shot__tag shot__tag--before">Before</span>
           </div>
           <div class="shot__divider"></div>
+          <div class="shot__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7H3l3-3M3 7l3 3"/><path d="M16 17h5l-3-3M21 17l-3 3"/>
+            </svg>
+          </div>
           <div class="shot__half">
-            <img src="/images/cleanup-after-1.jpg" alt="Cleanup after">
-            <span class="shot__tag">After</span>
+            <img src="/images/cleanup-after-1.jpg" alt="Property after cleanup">
+            <span class="shot__tag shot__tag--after">After</span>
           </div>
         </div>
-        <figcaption>Property cleanup · Mississauga</figcaption>
+        <figcaption>
+          <span class="shot__svc">Property cleanup</span>
+          <span class="shot__loc">Mississauga</span>
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -659,7 +897,7 @@ a { color:inherit; text-decoration:none; }
 <footer class="footer">
   <div class="container footer__inner">
     <span class="footer__brand">BlackHorse Property Care</span>
-    <span>© 2025 BlackHorse Property Care. All rights reserved.</span>
+    <span>© 2026 BlackHorse Property Care. All rights reserved.</span>
     <span>Milton · Oakville · Mississauga</span>
   </div>
 </footer>
