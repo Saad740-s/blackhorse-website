@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Practical lawn care, driveway sealing and seasonal cleanup guides for homeowners in Milton, Oakville and Mississauga, from BlackHorse Property Care.">
+<meta name="theme-color" content="#0a0f0d">
+<title>Blog — Lawn Care & Property Tips | BlackHorse Property Care</title>
+<meta property="og:title" content="Blog — Lawn Care & Property Tips | BlackHorse Property Care">
+<meta property="og:description" content="Practical lawn care, driveway sealing and seasonal cleanup guides for homeowners in Milton, Oakville and Mississauga, from BlackHorse Property Care.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#0a0f0d; --deep:#111a15; --pine:#1a3326; --moss:#2d5c40;
+  --turf:#4a9962; --gold:#c8973a; --gold-lt:#e0b86a; --bone:#f5f2eb;
+  --warm:#ede8dc; --ink:#1c2420; --muted:#5a6b62;
+  --line:rgba(255,255,255,.08); --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bone);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:90%;max-width:1100px;margin-inline:auto}
+.display{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.05;letter-spacing:-.02em}
+.label{font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.label--moss{color:var(--turf)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:.9rem 2rem;border-radius:999px;cursor:pointer;transition:all .3s var(--ease);border:1.5px solid transparent}
+.btn--gold{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.btn--gold:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-2px)}
+.btn--sm{padding:.65rem 1.4rem;font-size:.8rem}
+
+/* NAV (solid on inner pages) */
+.nav{position:fixed;inset:0 0 auto;z-index:100;padding:.75rem 0;background:rgba(10,15,13,.92);backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid var(--line)}
+.nav__inner{display:flex;align-items:center;gap:1.5rem}
+.nav__logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+.nav__links{display:flex;gap:2rem;margin-left:auto;margin-right:1rem}
+.nav__links a{color:rgba(245,242,235,.75);font-size:.88rem;transition:color .2s;position:relative;padding:.2rem 0}
+.nav__links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+.nav__links a:hover,.nav__links a.active{color:var(--bone)}
+.nav__links a:hover::after,.nav__links a.active::after{width:100%}
+.nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px;margin-left:auto}
+.nav__toggle span{width:22px;height:1.5px;background:var(--bone);transition:.3s var(--ease)}
+.nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav__toggle[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav__toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav__mobile{display:none;flex-direction:column;padding:1.5rem 5% 2rem;background:rgba(10,15,13,.97);gap:.2rem;border-top:1px solid var(--line)}
+.nav__mobile a{color:var(--bone);padding:.85rem 0;font-size:1.1rem;border-bottom:1px solid var(--line);opacity:.8}
+.nav__mobile a:last-child{border:0}
+.nav__mobile a.btn{margin-top:1rem;text-align:center;justify-content:center;opacity:1}
+.nav__mobile.open{display:flex}
+
+/* FOOTER */
+.footer{background:#060a08;color:rgba(245,242,235,.35);padding:1.8rem 0;margin-top:clamp(4rem,8vw,7rem)}
+.footer__inner{display:flex;flex-wrap:wrap;gap:.6rem 2rem;align-items:center;justify-content:space-between;font-size:.8rem}
+.footer__brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(245,242,235,.6);letter-spacing:.06em}
+
+/* WHATSAPP */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:.55rem;background:#25d366;color:#fff;padding:.8rem 1.1rem;border-radius:999px;font-weight:500;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 8px 28px -6px rgba(37,211,102,.6);transition:transform .3s var(--ease)}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:20px;height:20px;flex:0 0 20px}
+@media (max-width:560px){.wa-float{padding:.85rem;right:16px;bottom:16px}.wa-float span{display:none}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:720px){.nav__links{display:none}.nav .btn--sm{display:none}.nav__toggle{display:flex}}
+
+/* BLOG HERO */
+.bhero{background:linear-gradient(160deg,var(--black),var(--pine));color:var(--bone);padding:9.5rem 0 4.5rem;position:relative;overflow:hidden}
+.bhero::after{content:'';position:absolute;right:-10%;top:-30%;width:600px;height:600px;background:radial-gradient(closest-side,rgba(200,151,58,.16),transparent 70%);pointer-events:none}
+.bhero .display{color:var(--bone);font-size:clamp(2.4rem,6vw,4.5rem);margin:.8rem 0 1rem}
+.bhero p{color:rgba(245,242,235,.65);max-width:560px;font-weight:300;font-size:1.05rem}
+/* POST CARDS */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2.5rem,5vw,4rem)}
+.post-card{background:#fff;border:1px solid rgba(28,36,32,.08);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 16px -10px rgba(28,36,32,.14);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.post-card:hover{transform:translateY(-6px);border-color:rgba(200,151,58,.4);box-shadow:0 24px 48px -22px rgba(26,51,38,.35)}
+.post-card__head{height:150px;display:flex;align-items:flex-end;padding:1.2rem;position:relative;overflow:hidden}
+.post-card__head svg{position:absolute;right:-14px;bottom:-14px;width:120px;height:120px;opacity:.16;color:#fff}
+.ph--green{background:linear-gradient(135deg,var(--moss),var(--pine))}
+.ph--gold{background:linear-gradient(135deg,var(--gold),#8f6620)}
+.ph--dark{background:linear-gradient(135deg,#224532,var(--black))}
+.post-card__cat{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.35);padding:.3rem .7rem;border-radius:999px;backdrop-filter:blur(4px)}
+.post-card__body{padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.post-card__body h2{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;line-height:1.2;margin-bottom:.7rem}
+.post-card__body p{font-size:.9rem;color:var(--muted);line-height:1.65;flex:1}
+.post-card__meta{display:flex;align-items:center;gap:.8rem;font-size:.72rem;color:var(--muted);letter-spacing:.05em;margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid rgba(28,36,32,.07)}
+.post-card__read{margin-left:auto;color:var(--gold);font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;display:inline-flex;align-items:center;gap:.3rem;transition:gap .25s var(--ease)}
+.post-card:hover .post-card__read{gap:.55rem}
+@media (max-width:980px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo" aria-label="BlackHorse Property Care">
+      <img src="/images/logo.png" alt="BlackHorse Property Care">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">How it works</a>
+      <a href="index.html#why">Why us</a>
+      <a href="index.html#gallery">Work</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#booking" class="btn btn--gold btn--sm">Book a service</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#process">How it works</a>
+    <a href="index.html#why">Why us</a>
+    <a href="index.html#gallery">Work</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#booking" class="btn btn--gold">Book a service</a>
+  </div>
+</header>
+
+<section class="bhero">
+  <div class="container">
+    <p class="label">The BlackHorse blog</p>
+    <h1 class="display">Property care,<br>explained properly.</h1>
+    <p>Practical guides on lawns, driveways and seasonal care for homeowners in Milton, Oakville and Mississauga — written by the crew that does the work.</p>
+  </div>
+</section>
+
+<section style="padding:0 0 2rem;">
+  <div class="container">
+    <div class="blog-grid">
+      <a class="post-card reveal" href="blog-lawn-care-cost-milton-oakville-mississauga.html">
+        <div class="post-card__head ph--gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 7H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H6"/></svg>
+          <span class="post-card__cat">Pricing guide</span>
+        </div>
+        <div class="post-card__body">
+          <h2>How Much Does Lawn Care Cost in Milton, Oakville & Mississauga? (2026 Guide)</h2>
+          <p>What homeowners in the GTA-West actually pay for mowing, cleanups and seasonal packages — and the five factors that move your quote up or down.</p>
+          <div class="post-card__meta">
+            <span>June 15, 2026</span>
+            <span>&middot;</span>
+            <span>6 min read</span>
+            <span class="post-card__read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a class="post-card reveal" href="blog-when-to-seal-driveway-ontario.html">
+        <div class="post-card__head ph--dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V5l8-3z"/></svg>
+          <span class="post-card__cat">Driveway sealing</span>
+        </div>
+        <div class="post-card__body">
+          <h2>When Should You Seal Your Driveway in Ontario? Timing, Frequency & Signs</h2>
+          <p>Ontario winters are brutal on asphalt. Here's the ideal sealing window, how often to reseal, and the warning signs your driveway is overdue.</p>
+          <div class="post-card__meta">
+            <span>May 28, 2026</span>
+            <span>&middot;</span>
+            <span>5 min read</span>
+            <span class="post-card__read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a class="post-card reveal" href="blog-spring-cleanup-checklist-gta.html">
+        <div class="post-card__head ph--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 4c-8 0-14 4-14 12 8 0 14-4 14-12z"/><path d="M6 16c-1.5 1.5-2.5 3-3 4"/></svg>
+          <span class="post-card__cat">Seasonal care</span>
+        </div>
+        <div class="post-card__body">
+          <h2>Spring Cleanup Checklist: 8 Steps to Wake Up Your GTA Lawn</h2>
+          <p>The right order matters: rake too early and you damage the lawn, mow too short and weeds move in. The full spring reset, step by step.</p>
+          <div class="post-card__meta">
+            <span>April 12, 2026</span>
+            <span>&middot;</span>
+            <span>6 min read</span>
+            <span class="post-card__read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span class="footer__brand">BlackHorse Property Care</span>
+    <span>&copy; 2026 BlackHorse Property Care. All rights reserved.</span>
+    <span>Milton &middot; Oakville &middot; Mississauga</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/14372196133?text=Hi%20BlackHorse%2C%20I%27d%20like%20a%20quote%20for%20my%20property." target="_blank" rel="noopener" aria-label="WhatsApp BlackHorse">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+    <path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9.9.9-4.7-.3-.4C5.4 18.1 5 16.6 5 15c0-6 4.9-10.9 11-10.9S27 9 27 15s-4.9 9.8-11 9.8zm6-7.4c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8 0 1.7 1.2 3.3 1.4 3.5.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/>
+  </svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  'use strict';
+  var toggle = document.getElementById('navToggle');
+  var mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', function(){
+    var open = mobile.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e, i){
+        if(e.isIntersecting){ setTimeout(function(){ e.target.classList.add('in'); }, i * 55); io.unobserve(e.target); }
+      });
+    }, {threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
