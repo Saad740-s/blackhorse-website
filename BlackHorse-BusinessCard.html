@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackHorse Property Care — Business Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; }
+body {
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Business Card Container — Exact Staples Dimensions */
+.card-container {
+  width: 3.5in;
+  height: 2in;
+  background: linear-gradient(135deg, #0a0f0d 0%, #111a15 100%);
+  color: #f5f2eb;
+  padding: 0.2in 0.25in;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* Top accent line */
+.card-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c8973a, #e0b86a, transparent);
+}
+
+/* ===== TOP SECTION: LOGO + BRANDING ===== */
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.15in;
+  margin-bottom: 0.08in;
+}
+
+.horse-icon {
+  font-size: 0.5in;
+  line-height: 1;
+  color: #e0b86a;
+  flex-shrink: 0;
+  margin-top: 0.02in;
+}
+
+.branding {
+  flex: 1;
+}
+
+.company-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.46in;
+  font-weight: 600;
+  line-height: 0.9;
+  color: #e0b86a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.tagline-text {
+  font-size: 0.08in;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a9962;
+  font-weight: 500;
+  margin: 0.01in 0 0 0;
+}
+
+/* ===== TAGLINE ===== */
+.tagline {
+  font-size: 0.085in;
+  font-style: italic;
+  color: rgba(224, 184, 106, 0.9);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.06in;
+}
+
+/* ===== SERVICES (2 COLUMNS) ===== */
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.05in 0.12in;
+  margin-bottom: 0.08in;
+  font-size: 0.063in;
+  line-height: 1.25;
+}
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.04in;
+  color: rgba(245, 242, 235, 0.85);
+}
+
+.service-item::before {
+  content: '✓';
+  color: #c8973a;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: -0.01in;
+}
+
+/* ===== BOTTOM SECTION ===== */
+.card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.1in;
+  padding-top: 0.06in;
+  border-top: 1px solid rgba(224, 184, 106, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-label {
+  font-size: 0.052in;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4a9962;
+  font-weight: 500;
+  margin: 0;
+}
+
+.contact-value {
+  font-size: 0.074in;
+  font-weight: 500;
+  color: #e0b86a;
+  margin: 0.01in 0 0 0;
+  line-height: 1.1;
+}
+
+.website-area {
+  font-size: 0.062in;
+  color: rgba(245, 242, 235, 0.7);
+  margin-top: 0.03in;
+  line-height: 1.2;
+}
+
+/* QR Code — positioned bottom right */
+.qr-container {
+  position: absolute;
+  bottom: 0.12in;
+  right: 0.12in;
+  width: 0.38in;
+  height: 0.38in;
+  background: #f5f2eb;
+  padding: 0.03in;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.qr-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  .card-container {
+    box-shadow: none;
+    margin: 0;
+  }
+  .instructions {
+    display: none;
+  }
+}
+
+/* ===== INSTRUCTIONS ===== */
+.instructions {
+  margin-top: 30px;
+  max-width: 4.5in;
+  padding: 20px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.instructions h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #0a0f0d;
+  border-bottom: 2px solid #c8973a;
+  padding-bottom: 8px;
+}
+
+.instructions ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.instructions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.instructions strong {
+  color: #c8973a;
+}
+
+.instructions code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- BUSINESS CARD -->
+<div class="card-container">
+  
+  <!-- Top: Logo + Branding -->
+  <div class="card-top">
+    <div class="horse-icon">🐴</div>
+    <div class="branding">
+      <h1 class="company-name">BLACKHORSE</h1>
+      <p class="tagline-text">Property Care</p>
+    </div>
+  </div>
+
+  <!-- Tagline -->
+  <div class="tagline">We Show Up. We Deliver.</div>
+
+  <!-- Services Grid -->
+  <div class="services">
+    <div class="service-item">Lawn Mowing &amp; Edging</div>
+    <div class="service-item">Driveway Sealing</div>
+    <div class="service-item">Seasonal Cleanup</div>
+    <div class="service-item">Mulch Installation</div>
+  </div>
+
+  <!-- Bottom: Contact Info -->
+  <div class="card-bottom">
+    <div class="contact-info">
+      <p class="contact-label">Call/Text</p>
+      <p class="contact-value">(437) 219-6133</p>
+      <div class="website-area">
+        <div>blackhorsepropertycare.ca</div>
+        <div>Milton • Oakville • Mississauga</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code (Instagram) -->
+  <div class="qr-container">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.instagram.com/blackhorsepropertycare" alt="Instagram @blackhorsepropertycare">
+  </div>
+
+</div>
+
+<!-- INSTRUCTIONS -->
+<div class="instructions">
+  <h2>📋 How to Print at Staples</h2>
+  
+  <ol>
+    <li><strong>Print to PDF:</strong> Press <code>Ctrl+P</code> (Windows) or <code>Cmd+P</code> (Mac)</li>
+    <li><strong>Select "Save as PDF"</strong> as your printer</li>
+    <li><strong>Save as:</strong> <code>BlackHorse-BusinessCard.pdf</code></li>
+    <li><strong>Go to staples.com</strong> → Print Services → Business Cards</li>
+    <li><strong>Upload your PDF</strong></li>
+    <li><strong>Select options:</strong>
+      <ul style="margin: 8px 0 0 20px;">
+        <li>Quantity: <strong>500</strong> or <strong>1000</strong></li>
+        <li>Size: <strong>3.5" × 2"</strong></li>
+        <li>Paper: <strong>Standard</strong> (or Glossy for premium look)</li>
+      </ul>
+    </li>
+    <li><strong>Review proof</strong> → Order</li>
+  </ol>
+
+  <p style="margin-top: 12px; padding: 10px; background: #f9f9f9; border-left: 3px solid #c8973a;">
+    💡 <strong>Pro tip:</strong> Test print one copy at home first to verify colors &amp; sizing before ordering 500+.
+  </p>
+</div>
+
+</body>
+</html>
