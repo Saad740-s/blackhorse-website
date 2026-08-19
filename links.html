@@ -13,7 +13,7 @@
 
         body {
             font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f5f2eb 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #0a0f0d 0%, #1a3326 50%, #2d5c40 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -29,112 +29,292 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #c8973a 0%, #e0b86a 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             color: white;
-            box-shadow: 0 8px 24px rgba(200, 151, 58, 0.2);
+            box-shadow: 0 12px 36px rgba(200, 151, 58, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 12px 36px rgba(200, 151, 58, 0.4);
+            }
+            50% {
+                box-shadow: 0 12px 48px rgba(200, 151, 58, 0.6);
+            }
         }
 
         .company-name {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            color: #0a0f0d;
+            color: #c8973a;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .tagline {
-            font-size: 14px;
-            color: #666;
+            font-size: 15px;
+            color: #e0b86a;
             margin-bottom: 8px;
             font-weight: 500;
         }
 
         .service-areas {
             font-size: 13px;
-            color: #1a3326;
+            color: #a8d5ba;
             font-weight: 600;
+            letter-spacing: 1px;
         }
 
-        .links {
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c8973a, transparent);
+            margin: 20px auto;
+        }
+
+        .tagline-bold {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e0b86a;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #a8d5ba;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .links-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 30px;
         }
 
         .link-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 16px 24px;
+            justify-content: flex-start;
+            padding: 16px 20px;
             border-radius: 12px;
             text-decoration: none;
             color: white;
             font-weight: 600;
             font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+            z-index: 0;
         }
 
-        .link-btn.primary {
-            background: linear-gradient(135deg, #c8973a 0%, #e0b86a 100%);
+        .link-btn:hover::before {
+            left: 100%;
         }
 
-        .link-btn.primary:hover {
-            background: linear-gradient(135deg, #b58530 0%, #d4aa5a 100%);
-        }
-
-        .link-btn.secondary {
-            background: linear-gradient(135deg, #1a3326 0%, #2d5c40 100%);
-        }
-
-        .link-btn.secondary:hover {
-            background: linear-gradient(135deg, #0f1f1c 0%, #1a3326 100%);
-        }
-
-        .link-btn.social {
-            background: linear-gradient(135deg, #5B9BD5 0%, #4A7BBF 100%);
-        }
-
-        .link-btn.social:hover {
-            background: linear-gradient(135deg, #4A7BBF 0%, #3A6BA5 100%);
+        .link-btn-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .link-icon {
-            margin-right: 10px;
-            font-size: 20px;
+            font-size: 24px;
+            margin-right: 14px;
+            min-width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .link-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .link-subtext {
+            font-size: 12px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .arrow {
+            font-size: 18px;
+            opacity: 0.8;
+            transition: transform 0.3s ease;
+        }
+
+        .link-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .link-btn:hover {
+            transform: translateX(4px);
+        }
+
+        /* Primary CTA */
+        .link-btn.primary {
+            background: linear-gradient(135deg, #c8973a 0%, #e0b86a 100%);
+            box-shadow: 0 8px 24px rgba(200, 151, 58, 0.3);
+        }
+
+        .link-btn.primary:hover {
+            box-shadow: 0 12px 32px rgba(200, 151, 58, 0.5);
+            background: linear-gradient(135deg, #b58530 0%, #d4aa5a 100%);
+        }
+
+        /* Secondary Links */
+        .link-btn.secondary {
+            background: linear-gradient(135deg, rgba(200, 151, 58, 0.15), rgba(224, 184, 106, 0.1));
+            border: 1.5px solid rgba(200, 151, 58, 0.3);
+            color: #e0b86a;
+        }
+
+        .link-btn.secondary:hover {
+            background: linear-gradient(135deg, rgba(200, 151, 58, 0.25), rgba(224, 184, 106, 0.2));
+            border-color: rgba(200, 151, 58, 0.6);
+            box-shadow: 0 8px 24px rgba(200, 151, 58, 0.2);
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(200, 151, 58, 0.5);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .service-card.mowing {
+            background: linear-gradient(135deg, rgba(200, 151, 58, 0.2), rgba(224, 184, 106, 0.1));
+        }
+
+        .service-card.mowing:hover {
+            background: linear-gradient(135deg, rgba(200, 151, 58, 0.3), rgba(224, 184, 106, 0.2));
+            box-shadow: 0 8px 24px rgba(200, 151, 58, 0.2);
+        }
+
+        .service-card.cleanup {
+            background: linear-gradient(135deg, rgba(168, 213, 186, 0.2), rgba(188, 233, 206, 0.1));
+        }
+
+        .service-card.cleanup:hover {
+            background: linear-gradient(135deg, rgba(168, 213, 186, 0.3), rgba(188, 233, 206, 0.2));
+            box-shadow: 0 8px 24px rgba(168, 213, 186, 0.2);
+        }
+
+        .service-card.mulch {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.2), rgba(169, 120, 73, 0.1));
+        }
+
+        .service-card.mulch:hover {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.3), rgba(169, 120, 73, 0.2));
+            box-shadow: 0 8px 24px rgba(139, 90, 43, 0.2);
+        }
+
+        .service-card.sealing {
+            background: linear-gradient(135deg, rgba(100, 120, 140, 0.2), rgba(130, 150, 170, 0.1));
+        }
+
+        .service-card.sealing:hover {
+            background: linear-gradient(135deg, rgba(100, 120, 140, 0.3), rgba(130, 150, 170, 0.2));
+            box-shadow: 0 8px 24px rgba(100, 120, 140, 0.2);
+        }
+
+        /* Social Links */
         .social-links {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 30px;
+            margin-top: 12px;
         }
 
         .social-btn {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             padding: 16px;
             border-radius: 12px;
             text-decoration: none;
@@ -142,57 +322,78 @@
             font-weight: 600;
             font-size: 14px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .social-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
         }
 
         .social-btn.instagram {
             background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+            border-color: rgba(225, 48, 108, 0.5);
+        }
+
+        .social-btn.instagram:hover {
+            box-shadow: 0 8px 24px rgba(225, 48, 108, 0.3);
         }
 
         .social-btn.whatsapp {
             background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+            border-color: rgba(37, 211, 102, 0.5);
+        }
+
+        .social-btn.whatsapp:hover {
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
         }
 
         .social-btn.linkedin {
             background: linear-gradient(135deg, #0077B5 0%, #005FA3 100%);
+            border-color: rgba(0, 119, 181, 0.5);
         }
 
-        .social-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
+        .social-btn.linkedin:hover {
+            box-shadow: 0 8px 24px rgba(0, 119, 181, 0.3);
         }
 
+        /* Footer */
         .footer {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(200, 151, 58, 0.2);
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            font-weight: 700;
+            color: #c8973a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .footer-text {
             font-size: 12px;
-            color: #999;
-            margin-bottom: 8px;
-        }
-
-        .tagline-footer {
-            font-size: 13px;
-            font-weight: 700;
-            color: #1a3326;
+            color: rgba(224, 184, 106, 0.6);
         }
 
         @media (max-width: 480px) {
             .company-name {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .link-btn {
                 font-size: 15px;
-                padding: 14px 20px;
+                padding: 14px 16px;
+            }
+
+            .logo {
+                font-size: 40px;
             }
         }
     </style>
@@ -201,56 +402,114 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="logo">BH</div>
-            <div class="company-name">BlackHorse Property Care</div>
-            <div class="tagline">Professional Lawn Care & Property Maintenance</div>
-            <div class="service-areas">Milton • Oakville • Mississauga</div>
+            <div class="logo-container">
+                <div class="logo">BH</div>
+            </div>
+            <div class="company-name">BlackHorse</div>
+            <div class="tagline">Property Care</div>
+            <div class="divider"></div>
+            <div class="service-areas">MILTON • OAKVILLE • MISSISSAUGA</div>
+            <div class="tagline-bold">We Show Up. We Deliver. ✨</div>
         </div>
 
-        <!-- Main Links -->
-        <div class="links">
-            <!-- Booking Link (Primary CTA) -->
-            <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="link-btn primary">
-                <span class="link-icon">📅</span>
-                Book Your Service
-            </a>
-
-            <!-- Website -->
-            <a href="https://blackhorsepropertycare.ca" class="link-btn secondary">
-                <span class="link-icon">🌐</span>
-                Visit Our Website
-            </a>
-
-            <!-- Phone -->
-            <a href="tel:+14372196133" class="link-btn secondary">
-                <span class="link-icon">📞</span>
-                Call: (437) 219-6133
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/company/blackhorse-property-care/" class="link-btn social">
-                <span class="link-icon">💼</span>
-                Follow on LinkedIn
-            </a>
+        <!-- Book & Contact Section -->
+        <div class="section">
+            <div class="section-title">Get Started</div>
+            <div class="links-group">
+                <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="link-btn primary">
+                    <div class="link-btn-content">
+                        <span class="link-icon">📅</span>
+                        <div class="link-text">
+                            <div>Book Your Service</div>
+                            <div class="link-subtext">Instant online booking</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <!-- Social Media Links -->
-        <div class="social-links">
-            <a href="https://instagram.com/blackhorsepropertycare" class="social-btn instagram">
-                <span class="social-icon">📸</span>
-                Instagram
-            </a>
+        <!-- Services Section -->
+        <div class="section">
+            <div class="section-title">Our Services</div>
+            <div class="services-grid">
+                <div class="service-card mowing">
+                    <span class="service-icon">🌿</span>
+                    Lawn Mowing
+                </div>
+                <div class="service-card cleanup">
+                    <span class="service-icon">🧹</span>
+                    Cleanups
+                </div>
+                <div class="service-card mulch">
+                    <span class="service-icon">🪨</span>
+                    Mulch Install
+                </div>
+                <div class="service-card sealing">
+                    <span class="service-icon">🛡️</span>
+                    Driveway Sealing
+                </div>
+            </div>
+        </div>
 
-            <a href="https://wa.me/14372196133" class="social-btn whatsapp">
-                <span class="social-icon">💬</span>
-                WhatsApp
-            </a>
+        <!-- Contact Section -->
+        <div class="section">
+            <div class="section-title">Contact & Info</div>
+            <div class="links-group">
+                <a href="tel:+14372196133" class="link-btn secondary">
+                    <div class="link-btn-content">
+                        <span class="link-icon">📞</span>
+                        <div class="link-text">
+                            <div>(437) 219-6133</div>
+                            <div class="link-subtext">Call or text us</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://blackhorsepropertycare.ca" class="link-btn secondary">
+                    <div class="link-btn-content">
+                        <span class="link-icon">🌐</span>
+                        <div class="link-text">
+                            <div>Visit Our Website</div>
+                            <div class="link-subtext">Learn more about us</div>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Section -->
+        <div class="section">
+            <div class="section-title">Follow Us</div>
+            <div class="social-links">
+                <a href="https://instagram.com/blackhorsepropertycare" class="social-btn instagram">
+                    <span class="social-icon">📸</span>
+                    Instagram
+                </a>
+
+                <a href="https://wa.me/14372196133" class="social-btn whatsapp">
+                    <span class="social-icon">💬</span>
+                    WhatsApp
+                </a>
+
+                <a href="https://www.linkedin.com/company/blackhorse-property-care/" class="social-btn linkedin">
+                    <span class="social-icon">💼</span>
+                    LinkedIn
+                </a>
+
+                <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="social-btn" style="background: linear-gradient(135deg, #c8973a 0%, #e0b86a 100%); border-color: rgba(200, 151, 58, 0.5);">
+                    <span class="social-icon">✨</span>
+                    Book Now
+                </a>
+            </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <div class="footer-text">We Show Up. We Deliver. ✨</div>
-            <div class="tagline-footer">Trusted Local Property Care</div>
+            <div class="footer-tagline">Professional Property Care</div>
+            <div class="footer-text">Trusted by Milton, Oakville & Mississauga</div>
         </div>
     </div>
 </body>
