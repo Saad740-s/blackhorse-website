@@ -569,7 +569,7 @@ a { color:inherit; text-decoration:none; }
       <a href="blog.html">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#booking" class="btn btn--gold btn--sm">Book a service</a>
+    <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold btn--sm">Book now</a>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -582,7 +582,7 @@ a { color:inherit; text-decoration:none; }
     <a href="#reviews">Reviews</a>
     <a href="blog.html">Blog</a>
     <a href="#contact">Contact</a>
-    <a href="#booking" class="btn btn--gold">Book a service</a>
+    <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold">Book now</a>
   </div>
 </header>
 
@@ -597,7 +597,7 @@ a { color:inherit; text-decoration:none; }
     <h1 class="display display--lg hero__title reveal">Property care<br><em>done right.</em></h1>
     <p class="hero__sub reveal">Lawn maintenance, seasonal cleanups, driveway sealing and full property services — on schedule, every visit.</p>
     <div class="hero__cta reveal">
-      <a href="#booking" class="btn btn--gold btn--lg">Request a service</a>
+      <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold btn--lg">Book now online</a>
       <a href="#gallery" class="btn btn--outline">See our work</a>
     </div>
     <div class="hero__stats reveal">
@@ -722,7 +722,7 @@ a { color:inherit; text-decoration:none; }
           <h3>Property Restoration</h3>
           <p>Neglected outdoor spaces brought back to life — from overgrown yards to full property refreshes. This is the job we're most proud of.</p>
         </div>
-        <a href="#booking" class="btn btn--gold">Restore my property</a>
+        <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold">Restore my property</a>
       </article>
     </div>
   </div>
@@ -971,7 +971,7 @@ a { color:inherit; text-decoration:none; }
       <p class="label label--light">Ready to start</p>
       <h2 class="display display--sm">Your property deserves<br>better than average.</h2>
       <p>Most crews rush the job. We don't. BlackHorse does it once, and does it right.</p>
-      <a href="#booking" class="btn btn--gold">Request a service</a>
+      <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold">Book now</a>
     </div>
   </div>
 </div>
@@ -981,8 +981,12 @@ a { color:inherit; text-decoration:none; }
   <div class="container">
     <p class="label" style="color:var(--gold);">Ready when you are</p>
     <h2 class="display display--md">Book your<br><em>property service.</em></h2>
-    <a href="#contact" class="btn btn--gold btn--lg" style="margin-top:2rem;">Request a service</a>
-    <p>Online booking coming soon — for now, fill in the form below or message us on WhatsApp.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:1.2rem; justify-content:center; margin-top:2.4rem; align-items:center;">
+      <a href="https://staging.bookapp.cloud/booking/blackhorse-property-care-toronto/" class="btn btn--gold btn--lg" style="white-space:nowrap;">Book now online</a>
+      <span style="color:rgba(245,242,235,.4); font-size:.9rem;">or</span>
+      <a href="#contact" class="btn btn--outline btn--lg">Send us a message</a>
+    </div>
+    <p style="margin-top:1.8rem; color:rgba(245,242,235,.6); font-size:.88rem;">Instant online booking available 24/7. No phone calls needed.</p>
   </div>
 </section>
 
@@ -1002,7 +1006,7 @@ a { color:inherit; text-decoration:none; }
     </div>
     <div class="reveal reveal--right">
       <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <h3 class="form-title">Request a service</h3>
+        <h3 class="form-title">Send us a message</h3>
         <div class="field">
           <label for="name">Full name</label>
           <input id="name" type="text" name="name" autocomplete="name" placeholder="Jane Smith" required>
@@ -1012,27 +1016,14 @@ a { color:inherit; text-decoration:none; }
           <input id="email" type="email" name="email" autocomplete="email" placeholder="jane@email.com" required>
         </div>
         <div class="field">
-          <label for="phone">Phone</label>
-          <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="+1 (416) 000-0000" required>
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="+1 (416) 000-0000">
         </div>
         <div class="field">
-          <label for="service">Service needed</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Choose a service</option>
-            <option>Lawn Mowing & Edging</option>
-            <option>Spring / Fall Cleanup</option>
-            <option>Weed & Bush Removal</option>
-            <option>Core Aeration & Overseeding</option>
-            <option>Mulch Installation</option>
-            <option>Driveway Sealing</option>
-            <option>Property Restoration</option>
-          </select>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your property or ask a question…" required></textarea>
         </div>
-        <div class="field">
-          <label for="message">Property details</label>
-          <textarea id="message" name="message" placeholder="Address, lot size, anything else we should know…" required></textarea>
-        </div>
-        <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;">Send request</button>
+        <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;">Send message</button>
       </form>
     </div>
   </div>
